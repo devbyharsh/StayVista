@@ -1,0 +1,154 @@
+<% layout("/layouts/boilerplate") %>
+
+  <body>
+
+    <style>
+      #filters {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .filter {
+        text-align: center;
+        margin-top: 2rem;
+        opacity: 0.7;
+      }
+
+      .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+
+      .filter p {
+        font-size: 0.8rem;
+      }
+
+      .taxInfo {
+        display: none;
+      }
+
+      .tax-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgb(199, 195, 195);
+        color: #535252;
+        border-radius: 1rem;
+        height: 3rem;
+        padding: 1rem;
+        margin-left: 5rem;
+        font-size: 0.9rem;
+      }
+    </style>
+
+    <!-- All  filters -->
+    <div id="filters">
+
+      <!-- filter 1 -->
+      <div class="filter">
+        <div> <i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+
+      <!-- filter 2 -->
+      <div class="filter">
+        <div> <i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+
+      <!-- filter 3 -->
+      <div class="filter">
+        <div> <i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic cities</p>
+      </div>
+
+      <!-- filter 4 -->
+      <div class="filter">
+        <div> <i class="fa-solid fa-mountain-sun"></i></div>
+        <p>Mountains</p>
+      </div>
+
+      <!-- filter 5 -->
+      <div class="filter">
+        <div> <i class="fa-brands fa-fort-awesome-alt"></i></div>
+        <p>Castles</p>
+      </div>
+
+      <!-- filter 6 -->
+      <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Pools</p>
+      </div>
+
+      <!-- filter 7 -->
+      <div class="filter">
+        <div> <i class="fa-solid fa-campground"></i></div>
+        <p>Campaing</p>
+      </div>
+
+      <!-- filter 8 -->
+      <div class="filter">
+        <div> <i class="fa-solid fa-cow"></i></div>
+        <p>farms</p>
+      </div>
+
+      <!-- filter 9 -->
+      <div class="filter">
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p>Artic</p>
+      </div>
+
+      <div class="tax-toggle">
+        <div class="form-check-reverse form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+          <label class="form-check-label" for="switchCheckDefault">Display total after Taxes</label>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- All listings -->
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+      <%for(let listing of allListings){%>
+        <a href="/listings/<%= listing._id%>" class="listing-link">
+          <div class="card col listing-card">
+            <img src="<%= listing.image.url%>" class="card-img-top" alt="listing_img" style="height: 20rem;"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80';">
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+              <p class="card-text">
+                <b>
+                  <%= listing.title%>
+                </b><br>
+                <% if(listing.price) { %>
+                  &#8377; <%= listing.price.toLocaleString("en-IN") %>/Night <i class="taxInfo"> &nbsp; &nbsp;+18%
+                      GST</i>
+                    <% } else { %>
+                      <span style="color: #999;">Price not available</span>
+                      <% } %>
+              </p>
+            </div>
+          </div>
+        </a>
+        <%}%>
+    </div>
+  </body>
+
+
+  <script>
+    let taxSwitch = document.getElementById('switchCheckDefault');
+    taxSwitch.addEventListener('click', () => {
+      let taxInfo = document.getElementsByClassName("taxInfo");
+      for (info of taxInfo) {
+        if (info.style.display != 'inline') {
+          info.style.display = 'inline'
+        } else {
+          info.style.display = 'none'
+        }
+      }
+    })
+  </script>
