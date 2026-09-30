@@ -7,13 +7,13 @@ Node.js • Express.js • MongoDB • Mongoose • EJS • JavaScript • Boots
 
 Key features:
 
-🔐 User signup/login/logout
-🏠 Create, edit and delete listings
-⭐ Reviews and ratings
-👤 Authentication & authorization
-📸 Cloudinary image uploads
-🗺️ Mapbox location/maps
-🗄️ MongoDB database
-🛡️ Server-side validation
-⚠️ Error handling
-📱 Responsive UI
+🔐 User signup/login/logout,
+🏠 Create, edit and delete listings,
+⭐ Reviews and ratings,
+👤 Authentication & authorization,
+📸 Cloudinary image uploads,
+🗺️ Mapbox location/maps,
+🗄️ MongoDB database,
+🛡️ Server-side validation,
+⚠️ Error handling,
+📱 Responsive UI.
